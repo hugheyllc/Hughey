@@ -1,1 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law Firm Marketing Consultant Tampa Bay | Hughey LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Libre+Baskerville:ital@1&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:   #09131F;
+  --navy:  #0F2040;
+  --mid:   #1B3360;
+  --gold:  #C8973A;
+  --glt:   #E5AF58;
+  --gcm:   #F5E8CC;
+  --page:  #FAF8F4;
+  --warm:  #F3EDE3;
+  --white: #FFFFFF;
+  --text:  #111827;
+  --sub:   #4B5568;
+  --dim:   #9CA3AF;
+  --bdr:   #E5DDD2;
+  --ok:    #1A9E6B;
+  --man:   'Manrope', sans-serif;
+  --bas:   'Libre Baskerville', serif;
+  --bar:   'Barlow Condensed', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--man); color: var(--text); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+.w { max-width: 1160px; margin: 0 auto; padding: 0 52px; }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal.on { opacity: 1; transform: none; }
+.reveal-l { opacity: 0; transform: translateX(-22px); transition: opacity .8s ease, transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal-l.on { opacity: 1; transform: none; }
+.reveal-r { opacity: 0; transform: translateX(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal-r.on { opacity: 1; transform: none; }
 
+/* ── NAV ──────────────────────────────────────────────────── */
+nav {
+  position: fixed; inset: 0 0 auto; z-index: 600; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; transition: background .5s, border-color .4s;
+  border-bottom: 1px solid transparent;
+}
+nav.solid { background: rgba(9,19,31,.97); border-color: rgba(200,151,58,.15); backdrop-filter: blur(16px); }
+.n-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.n-mark { font-family: var(--bar); font-weight: 800; font-size: 20px; color: var(--gold); letter-spacing: .04em; }
+.n-rule { width: 1px; height: 18px; background: rgba(200,151,58,.3); }
+.n-name { font-family: var(--man); font-weight: 700; font-size: 13px; letter-spacing: .06em; color: rgba(255,255,255,.85); text-transform: uppercase; }
+.n-links { display: flex; align-items: center; gap: 32px; }
+.n-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.5); text-decoration: none; letter-spacing: .03em; transition: color .2s; }
+.n-links a:hover { color: rgba(255,255,255,.9); }
+.n-cta {
+  background: transparent; border: 1px solid var(--gold); color: var(--gold) !important;
+  font-weight: 700 !important; font-size: 12px !important; letter-spacing: .08em;
+  padding: 9px 22px; text-transform: uppercase; border-radius: 2px;
+  transition: all .25s !important;
+}
+.n-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh; background: var(--ink); position: relative;
+  overflow: hidden; display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start; padding: 68px 0 0;
+}
+/* Grain */
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  background-size: 300px 300px; opacity: .45; z-index: 0;
+}
+/* Orbs */
+.h-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.h-o1 { width: 560px; height: 560px; background: rgba(200,151,58,.1); top: -80px; right: -80px; animation: drift1 18s ease-in-out infinite alternate; }
+.h-o2 { width: 320px; height: 320px; background: rgba(27,51,96,.55); bottom: -40px; left: -40px; animation: drift2 14s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(-40px, 30px) scale(1.1); } }
+@keyframes drift2 { to { transform: translate(30px, -20px) scale(1.05); } }
+
+/* Sliding badge */
+.h-badge {
+  position: absolute; top: 96px; right: 52px; z-index: 2;
+  width: 96px; height: 96px; border: 1px solid rgba(200,151,58,.3);
+  border-radius: 50%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0;
+  opacity: 0; transform: rotate(-12deg) scale(.85);
+  animation: badgeIn 1.2s cubic-bezier(.16,1,.3,1) 1s both;
+}
+@keyframes badgeIn { to { opacity: 1; transform: rotate(0deg) scale(1); } }
+.h-badge-n { font-family: var(--bar); font-weight: 800; font-size: 30px; color: var(--gold); letter-spacing: -.02em; line-height: 1; }
+.h-badge-l { font-family: var(--man); font-weight: 600; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: rgba(200,151,58,.6); text-align: center; line-height: 1.3; }
+
+/* Hero slide system */
+.h-slides { position: relative; z-index: 2; padding: 0 52px; width: 100%; max-width: 960px; }
+.h-slide { position: absolute; opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+.h-slide.active { opacity: 1; position: relative; pointer-events: auto; }
+.h-setup {
+  display: block; font-family: var(--man); font-weight: 600;
+  font-size: clamp(16px, 1.8vw, 22px); letter-spacing: .02em;
+  color: rgba(255,255,255,.45); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.h-main {
+  display: block; font-family: var(--man); font-weight: 800;
+  font-size: clamp(44px, 6vw, 82px); line-height: 1.05;
+  letter-spacing: -.04em; color: var(--white);
+}
+.h-main em {
+  font-family: var(--bas); font-style: italic; font-weight: 400;
+  color: var(--glt); -webkit-text-fill-color: var(--glt);
+  letter-spacing: -.02em;
+}
+.h-foot { display: block; font-size: clamp(14px, 1.4vw, 18px); font-weight: 400; color: rgba(255,255,255,.45); margin-top: 16px; letter-spacing: .01em; }
+
+/* Hero CTA row */
+.h-cta-row {
+  position: relative; z-index: 2; padding: 48px 52px 0;
+  display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+}
+.btn-hero {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold); color: var(--ink);
+  font-family: var(--man); font-weight: 800; font-size: 13px;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 16px 34px; border: none; border-radius: 2px; cursor: pointer;
+  text-decoration: none; transition: background .25s, transform .2s;
+  box-shadow: 0 4px 24px rgba(200,151,58,.4);
+}
+.btn-hero:hover { background: var(--glt); transform: translateY(-1px); }
+.h-cred { font-size: 12px; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: .04em; }
+
+/* Slide dots */
+.h-dots {
+  position: relative; z-index: 2; padding: 32px 52px 52px;
+  display: flex; gap: 8px; align-items: center;
+}
+.h-dot { width: 24px; height: 2px; background: rgba(255,255,255,.18); cursor: pointer; transition: background .3s, width .3s; border: none; padding: 0; }
+.h-dot.on { background: var(--gold); width: 40px; }
+
+/* Scroll hint */
+.h-scroll {
+  position: absolute; bottom: 32px; left: 52px; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(255,255,255,.25);
+}
+.h-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(200,151,58,.5), transparent); animation: scrollpulse 2s ease-in-out infinite; }
+@keyframes scrollpulse { 0%,100%{opacity:.5;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
+
+/* ── TRUST STRIP ──────────────────────────────────────────── */
+.trust { background: var(--white); border-bottom: 1px solid var(--bdr); padding: 28px 0; }
+.trust-inner { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.t-item { display: flex; align-items: center; gap: 9px; padding: 4px 36px; font-size: 13px; font-weight: 600; color: var(--sub); border-right: 1px solid var(--bdr); }
+.t-item:last-child { border-right: none; }
+.t-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* ── PROBLEMS ─────────────────────────────────────────────── */
+.problems { padding: 0; background: var(--white); }
+.prob-header { padding: 96px 52px 64px; max-width: 1160px; margin: 0 auto; }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.sec-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--gold); }
+.sec-h2 { font-weight: 800; font-size: clamp(30px, 3.5vw, 48px); color: var(--navy); letter-spacing: -.04em; line-height: 1.1; }
+.sec-h2 em { font-family: var(--bas); font-style: italic; font-weight: 400; color: var(--mid); }
+.sec-sub { font-size: 16px; font-weight: 400; color: var(--sub); line-height: 1.8; max-width: 540px; margin-top: 12px; }
+
+.prob-rows { border-top: 1px solid var(--bdr); }
+.prob-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--bdr);
+  transition: background .3s;
+}
+.prob-row:hover { background: var(--page); }
+.prob-row:nth-child(even) .prob-q-side { order: 2; border-left: none; border-right: 1px solid var(--bdr); }
+.prob-row:nth-child(even) .prob-a-side { order: 1; }
+.prob-q-side {
+  padding: 56px 60px; border-right: 1px solid var(--bdr);
+  position: relative; overflow: hidden; display: flex; align-items: center;
+}
+.prob-bg-num {
+  position: absolute; font-family: var(--bar); font-weight: 800;
+  font-size: 180px; color: var(--bdr); line-height: 1; right: -10px; top: -10px;
+  letter-spacing: -.06em; pointer-events: none; user-select: none;
+  transition: color .3s;
+}
+.prob-row:hover .prob-bg-num { color: rgba(200,151,58,.08); }
+.prob-q-text {
+  font-family: var(--bas); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 1.9vw, 24px); color: var(--navy); line-height: 1.55;
+  max-width: 380px; position: relative; z-index: 2;
+}
+.prob-a-side { padding: 56px 60px; display: flex; flex-direction: column; justify-content: center; }
+.prob-a-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.prob-a-text { font-size: 15px; font-weight: 400; color: var(--sub); line-height: 1.8; margin-bottom: 20px; }
+.prob-a-link { display: inline-flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; color: var(--navy); text-decoration: none; border-bottom: 1.5px solid var(--bdr); padding-bottom: 2px; transition: all .2s; width: fit-content; }
+.prob-a-link:hover { color: var(--gold); border-color: var(--gold); gap: 14px; }
+
+/* ── SERVICES ─────────────────────────────────────────────── */
+.services { background: var(--navy); padding: 96px 0 0; overflow: hidden; }
+.svc-head { max-width: 1160px; margin: 0 auto; padding: 0 52px 64px; }
+.svc-head .sec-eyebrow { color: var(--gold); }
+.svc-rows { border-top: 1px solid rgba(255,255,255,.07); }
+.svc-row {
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  display: grid; grid-template-columns: 100px 1fr auto;
+  gap: 0; align-items: center;
+  padding: 0 52px; transition: background .35s; cursor: pointer;
+}
+.svc-row:hover { background: rgba(200,151,58,.06); }
+.svc-row:hover .svc-n { color: rgba(200,151,58,.2); }
+.svc-row:hover .svc-arrow { transform: translateX(6px); opacity: 1; }
+.svc-n { font-family: var(--bar); font-weight: 800; font-size: 64px; color: rgba(255,255,255,.06); letter-spacing: -.04em; line-height: 1; padding: 36px 0; transition: color .35s; }
+.svc-mid { padding: 36px 48px 36px 0; border-left: 1px solid rgba(255,255,255,.07); padding-left: 48px; }
+.svc-t { font-weight: 800; font-size: clamp(18px, 2vw, 26px); color: var(--white); letter-spacing: -.03em; margin-bottom: 8px; }
+.svc-d { font-size: 14px; font-weight: 400; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 580px; }
+.svc-arrow { font-size: 20px; color: var(--gold); opacity: 0; transition: all .3s; font-weight: 300; }
+
+/* ── PROOF ────────────────────────────────────────────────── */
+.proof { padding: 96px 0; background: var(--warm); }
+.proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+.proof-card {
+  background: var(--white); border: 1px solid var(--bdr); padding: 48px 44px;
+  position: relative; overflow: hidden;
+  transition: box-shadow .3s, transform .3s;
+}
+.proof-card:hover { box-shadow: 0 12px 48px rgba(9,19,31,.08); transform: translateY(-3px); }
+.proof-card::before {
+  content: '\201C'; font-family: var(--bas); font-style: italic;
+  font-size: 140px; line-height: .75; color: var(--gold);
+  position: absolute; top: 20px; right: 28px; opacity: .12;
+}
+.proof-stars { display: flex; gap: 2px; margin-bottom: 20px; }
+.proof-star { color: var(--gold); font-size: 16px; }
+.proof-q {
+  font-family: var(--bas); font-style: italic; font-weight: 400;
+  font-size: 17px; color: var(--navy); line-height: 1.7; margin-bottom: 28px;
+}
+.proof-rule { width: 32px; height: 2px; background: var(--gold); margin-bottom: 14px; }
+.proof-name { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+.proof-role { font-size: 13px; color: var(--dim); }
+
+/* ── STATS ────────────────────────────────────────────────── */
+.stats { background: var(--gold); padding: 0; }
+.stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-block { padding: 52px 40px; text-align: center; border-right: 1px solid rgba(9,19,31,.12); }
+.stat-block:last-child { border-right: none; }
+.stat-n { font-family: var(--bar); font-weight: 800; font-size: 64px; color: var(--ink); letter-spacing: -.04em; line-height: 1; margin-bottom: 6px; }
+.stat-n sup { font-size: 32px; vertical-align: super; }
+.stat-l { font-size: 13px; font-weight: 600; color: rgba(9,19,31,.55); line-height: 1.4; }
+
+/* ── ABOUT ────────────────────────────────────────────────── */
+.about { display: grid; grid-template-columns: 460px 1fr; min-height: 640px; }
+.about-l {
+  background: var(--ink); padding: 80px 60px; display: flex;
+  flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden;
+}
+.about-l-top { margin-bottom: auto; }
+.about-l-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(200,151,58,.3); padding: 7px 16px; margin-bottom: 0; }
+.about-l-badge-text { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+/* Geometric art */
+.about-geo { position: absolute; inset: 0; pointer-events: none; }
+.geo-c1 { position: absolute; width: 300px; height: 300px; border: 1px solid rgba(200,151,58,.08); border-radius: 50%; top: -80px; right: -80px; }
+.geo-c2 { position: absolute; width: 180px; height: 180px; border: 1px solid rgba(200,151,58,.06); border-radius: 50%; top: 20px; right: -20px; }
+.geo-line { position: absolute; width: 1px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(200,151,58,.1) 40%, rgba(200,151,58,.1) 60%, transparent); right: 100px; top: 0; }
+.about-bigname { font-family: var(--bar); font-weight: 800; font-size: 80px; color: var(--white); letter-spacing: -.04em; line-height: .95; margin-bottom: 8px; }
+.about-title-role { font-size: 13px; font-weight: 500; letter-spacing: .06em; color: rgba(255,255,255,.4); text-transform: uppercase; margin-bottom: 32px; }
+.about-rule { width: 36px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+.about-cred-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.06); font-size: 13px; font-weight: 400; color: rgba(255,255,255,.55); line-height: 1.5; }
+.about-cred-row strong { color: rgba(255,255,255,.85); font-weight: 600; }
+.about-cred-row::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.about-r { background: var(--page); padding: 80px 72px; display: flex; flex-direction: column; justify-content: center; }
+.about-pull {
+  font-family: var(--bas); font-style: italic; font-weight: 400;
+  font-size: clamp(19px, 2.2vw, 28px); color: var(--navy); line-height: 1.5;
+  border-left: 3px solid var(--gold); padding-left: 24px; margin-bottom: 28px;
+}
+.about-body { font-size: 15px; font-weight: 400; color: var(--sub); line-height: 1.85; margin-bottom: 36px; }
+.about-link { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 13px; color: var(--navy); text-decoration: none; text-transform: uppercase; letter-spacing: .06em; border-bottom: 2px solid var(--navy); padding-bottom: 3px; transition: all .2s; }
+.about-link:hover { color: var(--gold); border-color: var(--gold); gap: 15px; }
+
+/* ── AUDIT ────────────────────────────────────────────────── */
+.audit { background: var(--white); border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); }
+.audit-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+.audit-l { padding: 72px 60px 72px 52px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--bdr); }
+.audit-r { padding: 72px 52px 72px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--page); }
+.a-prog-row { display: flex; gap: 6px; margin-bottom: 28px; }
+.a-pd { flex: 1; height: 3px; background: var(--bdr); border-radius: 2px; transition: background .35s; }
+.a-pd.lit { background: var(--gold); }
+.a-q { font-weight: 700; font-size: clamp(17px, 2vw, 22px); color: var(--navy); letter-spacing: -.03em; line-height: 1.35; margin-bottom: 28px; min-height: 62px; transition: opacity .2s; }
+.a-btns { display: flex; gap: 10px; }
+.a-btn { flex: 1; padding: 16px; border: 1.5px solid var(--bdr); border-radius: 4px; background: var(--white); font-family: var(--man); font-size: 14px; font-weight: 700; color: var(--sub); cursor: pointer; transition: all .22s; text-align: center; }
+.a-btn:hover { border-color: var(--navy); color: var(--navy); }
+.a-btn.y:hover { border-color: var(--ok); color: var(--ok); background: rgba(26,158,107,.04); }
+.a-result { display: none; flex-direction: column; }
+.a-result.show { display: flex; }
+.a-score { font-family: var(--bar); font-weight: 800; font-size: 88px; letter-spacing: -.05em; line-height: 1; color: var(--gold); margin-bottom: 8px; }
+.a-title { font-weight: 700; font-size: 18px; color: var(--navy); margin-bottom: 10px; letter-spacing: -.02em; line-height: 1.3; }
+.a-msg { font-size: 14px; color: var(--sub); line-height: 1.8; margin-bottom: 24px; }
+.btn-dark { display: inline-flex; align-items: center; gap: 9px; background: var(--navy); color: var(--white); font-family: var(--man); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; border: none; cursor: pointer; text-decoration: none; transition: background .2s; }
+.btn-dark:hover { background: var(--mid); }
+.a-restart { background: none; border: none; font-family: var(--man); font-size: 12px; font-weight: 600; color: var(--dim); cursor: pointer; margin-top: 10px; transition: color .2s; padding: 0; }
+.a-restart:hover { color: var(--gold); }
+
+/* ── INSIGHTS ─────────────────────────────────────────────── */
+.insights { padding: 96px 0; background: var(--white); }
+.ins-hd { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.see-all { font-weight: 700; font-size: 13px; color: var(--gold); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; border-bottom: 1.5px solid rgba(200,151,58,.4); padding-bottom: 2px; transition: gap .2s; }
+.see-all:hover { gap: 13px; }
+.ins-g { display: grid; grid-template-columns: 1.55fr 1fr 1fr; gap: 0; border: 1px solid var(--bdr); }
+.ins-c { padding: 44px 38px; display: flex; flex-direction: column; border-right: 1px solid var(--bdr); text-decoration: none; position: relative; overflow: hidden; transition: background .3s; }
+.ins-c:last-child { border-right: none; }
+.ins-c:hover { background: var(--page); }
+.ins-c::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.16,1,.3,1); }
+.ins-c:hover::before { transform: scaleX(1); }
+.ins-tag { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.ins-t { font-weight: 800; font-size: 18px; color: var(--navy); letter-spacing: -.03em; line-height: 1.3; margin-bottom: 12px; flex: 0; }
+.ins-c.lead .ins-t { font-size: 22px; }
+.ins-e { font-size: 14px; color: var(--sub); line-height: 1.75; flex: 1; margin-bottom: 24px; }
+.ins-rd { font-size: 12px; font-weight: 700; color: var(--navy); letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: all .2s; }
+.ins-c:hover .ins-rd { color: var(--gold); gap: 13px; }
+
+/* ── FINAL CTA ────────────────────────────────────────────── */
+.fin-cta { background: var(--gold); padding: 96px 0; position: relative; overflow: hidden; }
+.fin-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(9,19,31,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(9,19,31,.06) 1px, transparent 1px); background-size: 56px 56px; pointer-events: none; }
+.fin-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+.fin-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(9,19,31,.5); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
+.fin-eyebrow::before,.fin-eyebrow::after { content: ''; flex: 0 0 32px; height: 1px; background: rgba(9,19,31,.25); }
+.fin-h2 { font-weight: 800; font-size: clamp(32px, 4.5vw, 58px); color: var(--ink); letter-spacing: -.05em; line-height: 1.08; margin-bottom: 18px; }
+.fin-h2 em { font-family: var(--bas); font-style: italic; font-weight: 400; letter-spacing: -.02em; }
+.fin-sub { font-size: 16px; color: rgba(9,19,31,.6); line-height: 1.75; max-width: 480px; margin: 0 auto 44px; }
+.btn-fin { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--gcm); font-family: var(--man); font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 16px 36px; border: none; border-radius: 2px; cursor: pointer; text-decoration: none; transition: background .2s, gap .2s; }
+.btn-fin:hover { background: var(--navy); gap: 14px; }
+.fin-fine { margin-top: 20px; font-size: 12px; font-weight: 500; color: rgba(9,19,31,.35); }
+.fin-fine a { color: rgba(9,19,31,.5); text-decoration: none; transition: color .2s; }
+.fin-fine a:hover { color: var(--ink); }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+footer { background: var(--ink); padding: 72px 0 40px; }
+.ft-g { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,.06); margin-bottom: 36px; }
+.ft-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 18px; }
+.ft-mark { font-family: var(--bar); font-weight: 800; font-size: 18px; color: var(--gold); letter-spacing: .04em; }
+.ft-r { width: 1px; height: 16px; background: rgba(200,151,58,.3); }
+.ft-nm { font-weight: 700; font-size: 13px; letter-spacing: .06em; color: rgba(255,255,255,.7); text-transform: uppercase; }
+.ft-tag { font-family: var(--bas); font-style: italic; font-size: 14px; color: rgba(255,255,255,.28); line-height: 1.65; margin-bottom: 20px; }
+.ft-nap { font-size: 12px; font-weight: 500; color: rgba(255,255,255,.22); line-height: 1.9; }
+.ft-nap strong { color: rgba(255,255,255,.42); }
+.ft-ch { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.ft-col ul { list-style: none; }
+.ft-col ul li { margin-bottom: 10px; }
+.ft-col ul a { font-size: 13px; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+.ft-col ul a:hover { color: rgba(255,255,255,.8); }
+.ft-bot { display: flex; justify-content: space-between; align-items: center; }
+.ft-copy { font-size: 12px; color: rgba(255,255,255,.18); font-weight: 500; }
+.ft-soc { display: flex; gap: 18px; }
+.ft-soc a { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.22); text-decoration: none; transition: color .2s; }
+.ft-soc a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="n-logo">
+    <span class="n-mark">HUGHEY</span>
+    <div class="n-rule"></div>
+    <span class="n-name">LLC</span>
+  </a>
+  <div class="n-links">
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Insights</a>
+    <a href="#">Blog</a>
+    <a href="#" class="n-cta">Schedule a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-orb h-o1"></div>
+  <div class="h-orb h-o2"></div>
+
+  <div class="h-badge">
+    <div class="h-badge-n">20</div>
+    <div class="h-badge-l">Years<br>Legal Mktg</div>
+  </div>
+
+  <div class="h-slides" id="heroSlides">
+
+    <div class="h-slide active">
+      <span class="h-setup">The Uncomfortable Truth</span>
+      <span class="h-main">Your agency report<br>looks <em>perfect.</em></span>
+      <span class="h-foot">Your retained client count probably doesn't.</span>
+    </div>
+
+    <div class="h-slide">
+      <span class="h-setup">Twenty Years. One Industry.</span>
+      <span class="h-main">We only work<br>with <em>law firms.</em></span>
+      <span class="h-foot">That focus is the entire difference.</span>
+    </div>
+
+    <div class="h-slide">
+      <span class="h-setup">The Number That Actually Matters</span>
+      <span class="h-main">Cost per <em>retained client.</em><br>Not cost per click.</span>
+      <span class="h-foot">We build the dashboards that show you this clearly.</span>
+    </div>
+
+    <div class="h-slide">
+      <span class="h-setup">Before the Budget Burns</span>
+      <span class="h-main">Strategy. Data.<br>Intake. <em>Results.</em></span>
+      <span class="h-foot">Tampa Bay, FL · Serving law firms nationally.</span>
+    </div>
+
+  </div>
+
+  <div class="h-cta-row">
+    <a href="#" class="btn-hero">Schedule a Free Strategy Call →</a>
+    <span class="h-cred">727-483-3222 &nbsp;·&nbsp; Response within 1 business day</span>
+  </div>
+
+  <div class="h-dots" id="heroDots">
+    <button class="h-dot on" onclick="goSlide(0)"></button>
+    <button class="h-dot" onclick="goSlide(1)"></button>
+    <button class="h-dot" onclick="goSlide(2)"></button>
+    <button class="h-dot" onclick="goSlide(3)"></button>
+  </div>
+
+  <div class="h-scroll">
+    <div class="h-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust reveal">
+  <div class="trust-inner">
+    <div class="t-item"><div class="t-dot"></div>20+ Years in Legal Marketing</div>
+    <div class="t-item"><div class="t-dot"></div>Florida-Focused</div>
+    <div class="t-item"><div class="t-dot"></div>Data-Driven Strategy</div>
+    <div class="t-item"><div class="t-dot"></div>No Lock-In Retainers</div>
+    <div class="t-item"><div class="t-dot"></div>1-Business-Day Response</div>
+  </div>
+</div>
+
+<!-- PROBLEMS -->
+<section class="problems">
+  <div class="prob-header reveal">
+    <div class="sec-eyebrow">Does This Sound Familiar?</div>
+    <h2 class="sec-h2">The three problems we solve<br>for law firms <em>every single day.</em></h2>
+  </div>
+  <div class="prob-rows">
+    <div class="prob-row reveal">
+      <div class="prob-q-side">
+        <div class="prob-bg-num">01</div>
+        <p class="prob-q-text">"Our agency sends beautiful reports. We have no idea if the marketing is actually working."</p>
+      </div>
+      <div class="prob-a-side">
+        <div class="prob-a-label">How We Fix It</div>
+        <p class="prob-a-text">We build custom dashboards that connect your marketing spend directly to retained clients — not impressions, not clicks. You'll see exactly which channels are generating clients and which are burning budget with nothing to show for it.</p>
+        <a href="#" class="prob-a-link">Data Analysis →</a>
+      </div>
+    </div>
+    <div class="prob-row reveal" style="transition-delay:.1s">
+      <div class="prob-q-side">
+        <div class="prob-bg-num">02</div>
+        <p class="prob-q-text">"We're generating leads. But a lot of them disappear before they become retained clients."</p>
+      </div>
+      <div class="prob-a-side">
+        <div class="prob-a-label">How We Fix It</div>
+        <p class="prob-a-text">We audit your intake process from first contact through consultation — and find exactly where prospects fall off. We build systems that convert more of what you're already generating, without increasing your ad spend.</p>
+        <a href="#" class="prob-a-link">Intake Optimization →</a>
+      </div>
+    </div>
+    <div class="prob-row reveal" style="transition-delay:.2s">
+      <div class="prob-q-side">
+        <div class="prob-bg-num">03</div>
+        <p class="prob-q-text">"We've tried multiple agencies. None of them really understood how a law firm works."</p>
+      </div>
+      <div class="prob-a-side">
+        <div class="prob-a-label">How We Fix It</div>
+        <p class="prob-a-text">We've worked exclusively in legal marketing for 20 years. We understand the compliance rules, referral dynamics, and client acquisition patterns that generalist agencies consistently miss. This isn't a sector we serve — it's the only one we know.</p>
+        <a href="#" class="prob-a-link">About Our Approach →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="svc-head reveal">
+    <div class="sec-eyebrow">What We Do</div>
+    <h2 class="sec-h2" style="color:#fff">Four services.<br><span style="color:rgba(255,255,255,.35);font-weight:600">Built exclusively for law firms.</span></h2>
+  </div>
+  <div class="svc-rows reveal" style="transition-delay:.1s">
+    <a href="#" class="svc-row" style="text-decoration:none">
+      <div class="svc-n">01</div>
+      <div class="svc-mid">
+        <div class="svc-t">Data Analysis & Reporting</div>
+        <div class="svc-d">Custom dashboards that connect every marketing dollar to retained clients. We cut through GA4, Ads, CallRail, and CRM noise to give you a clear, honest picture of what's working.</div>
+      </div>
+      <div class="svc-arrow">→</div>
+    </a>
+    <a href="#" class="svc-row" style="text-decoration:none">
+      <div class="svc-n">02</div>
+      <div class="svc-mid">
+        <div class="svc-t">Agency Management</div>
+        <div class="svc-d">We set the right expectations, run your performance reviews, and keep your marketing partners accountable to cost-per-retained-client — not click-through rate.</div>
+      </div>
+      <div class="svc-arrow">→</div>
+    </a>
+    <a href="#" class="svc-row" style="text-decoration:none">
+      <div class="svc-n">03</div>
+      <div class="svc-mid">
+        <div class="svc-t">Intake Process Optimization</div>
+        <div class="svc-d">We map every touchpoint from first contact to retained client, find exactly where prospects fall off, and build systems that convert more leads without more ad spend.</div>
+      </div>
+      <div class="svc-arrow">→</div>
+    </a>
+    <a href="#" class="svc-row" style="text-decoration:none">
+      <div class="svc-n">04</div>
+      <div class="svc-mid">
+        <div class="svc-t">Strategic Marketing Planning</div>
+        <div class="svc-d">Built around one question: what does your firm need in 12 months? Channel mix, brand positioning, budget allocation — for your practice areas and your market.</div>
+      </div>
+      <div class="svc-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="w">
+    <div class="reveal">
+      <div class="sec-eyebrow">Client Results</div>
+      <h2 class="sec-h2">What firms say after<br>working with <em>us.</em></h2>
+    </div>
+    <div class="proof-grid reveal" style="transition-delay:.1s">
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-q">"Hughey LLC gave us clarity we never had. Within 60 days we stopped wasting budget on channels that weren't generating retained clients and redirected it where it was actually working."</p>
+        <div class="proof-rule"></div>
+        <div class="proof-name">Managing Partner</div>
+        <div class="proof-role">Florida Business Law Firm</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-q">"The intake audit was eye-opening. We had no idea how many qualified leads were falling through the cracks. After their process changes, our consultation booking rate improved significantly — without touching ad spend."</p>
+        <div class="proof-rule"></div>
+        <div class="proof-name">Principal Attorney</div>
+        <div class="proof-role">Personal Injury Practice, Tampa Bay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stats-inner">
+    <div class="stat-block"><div class="stat-n">20<sup>+</sup></div><div class="stat-l">Years in legal<br>marketing</div></div>
+    <div class="stat-block"><div class="stat-n">4</div><div class="stat-l">Focused service<br>areas</div></div>
+    <div class="stat-block"><div class="stat-n">FL</div><div class="stat-l">Deep Florida<br>market knowledge</div></div>
+    <div class="stat-block"><div class="stat-n">$0</div><div class="stat-l">Retainer lock-ins<br>required</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-l reveal-l">
+    <div class="about-geo">
+      <div class="geo-c1"></div><div class="geo-c2"></div><div class="geo-line"></div>
+    </div>
+    <div class="about-l-top">
+      <div class="about-l-badge"><span class="about-l-badge-text">Principal & Lead Strategist</span></div>
+    </div>
+    <div>
+      <div class="about-bigname">Joe<br>Hughey</div>
+      <div class="about-title-role">Founder · Hughey LLC · Tampa Bay, FL</div>
+      <div class="about-rule"></div>
+      <div class="about-cred-row"><strong>20 years</strong> working exclusively in legal marketing</div>
+      <div class="about-cred-row"><strong>Nidan</strong> — 2nd° Black Belt, Judo · Purple Belt, Gracie Jiu-Jitsu</div>
+      <div class="about-cred-row">Based in <strong>St. Petersburg, FL</strong> — serving Tampa Bay and nationally</div>
+      <div class="about-cred-row">Husband and <strong>father of five</strong></div>
+    </div>
+  </div>
+  <div class="about-r reveal-r" style="transition-delay:.15s">
+    <div class="sec-eyebrow">About the Firm</div>
+    <h2 class="sec-h2" style="margin-bottom:24px">We've never worked outside<br>the legal industry. <em>That's the point.</em></h2>
+    <blockquote class="about-pull">"The discipline you develop in competition — patience, precision, the willingness to keep refining — is exactly what law firm marketing requires."</blockquote>
+    <p class="about-body">Hughey LLC is a boutique legal marketing consultancy. Our work is led by Joe Hughey, who has spent 20 years building marketing operations for law firms of every size across Florida. We understand the compliance rules, referral dynamics, intake challenges, and client acquisition patterns that generalist agencies consistently miss — because we've been working exclusively in this space since 2004.</p>
+    <a href="#" class="about-link">Full Story →</a>
+  </div>
+</section>
+
+<!-- AUDIT -->
+<section class="audit">
+  <div class="audit-inner">
+    <div class="audit-l reveal-l">
+      <div class="sec-eyebrow">Quick Self-Check</div>
+      <h2 class="sec-h2" style="margin-bottom:14px">Is your firm's marketing <em>actually working?</em></h2>
+      <p class="sec-sub" style="font-size:15px;color:var(--sub);line-height:1.75;max-width:400px">Three questions. Thirty seconds. Most managing partners find the result clarifying — and specific enough to act on immediately.</p>
+    </div>
+    <div class="audit-r reveal-r" style="transition-delay:.15s">
+      <div id="auditQArea">
+        <div class="a-prog-row"><div class="a-pd" id="p1"></div><div class="a-pd" id="p2"></div><div class="a-pd" id="p3"></div></div>
+        <div class="a-q" id="aqText">Do you know your exact cost-per-retained-client for each marketing channel?</div>
+        <div class="a-btns">
+          <button class="a-btn y" onclick="aAns('yes')">Yes, I do</button>
+          <button class="a-btn" onclick="aAns('no')">Not really</button>
+        </div>
+      </div>
+      <div class="a-result" id="aRes">
+        <div class="a-score" id="aScoreEl">0/3</div>
+        <div class="a-title" id="aTitleEl"></div>
+        <div class="a-msg" id="aMsgEl"></div>
+        <a href="#" class="btn-dark">Schedule a Strategy Call →</a>
+        <button class="a-restart" onclick="aReset()">← Start over</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="insights">
+  <div class="w">
+    <div class="ins-hd reveal">
+      <div>
+        <div class="sec-eyebrow">Insights Library</div>
+        <h2 class="sec-h2">What 20 years taught us —<br><em>published freely.</em></h2>
+      </div>
+      <a href="#" class="see-all">View All →</a>
+    </div>
+    <div class="ins-g reveal" style="transition-delay:.1s">
+      <a href="#" class="ins-c lead">
+        <div class="ins-tag">Strategy · Featured Guide</div>
+        <h3 class="ins-t">The Law Firm Marketing Operating System</h3>
+        <p class="ins-e">The complete framework for building a marketing operation that compounds over time — from data infrastructure through content strategy and intake. Most firms operate reactively. This changes that.</p>
+        <div class="ins-rd">Read the Full Guide →</div>
+      </a>
+      <a href="#" class="ins-c">
+        <div class="ins-tag">SEO · AI Search</div>
+        <h3 class="ins-t">SEO for Law Firms in an AI-First Search World</h3>
+        <p class="ins-e">How ChatGPT, Perplexity, and AI Overviews are changing how prospective clients find attorneys — and what to do now.</p>
+        <div class="ins-rd">Read →</div>
+      </a>
+      <a href="#" class="ins-c">
+        <div class="ins-tag">Intake · Operations</div>
+        <h3 class="ins-t">Why Intake Is Your Most Important Marketing Channel</h3>
+        <p class="ins-e">Marketing generates the inquiry. Intake determines whether it becomes a client. Most firms invest in the wrong side of that equation.</p>
+        <div class="ins-rd">Read →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fin-cta">
+  <div class="fin-bg"></div>
+  <div class="fin-inner reveal">
+    <div class="fin-eyebrow">No Pitch. No Deck.</div>
+    <h2 class="fin-h2">Ready to build marketing<br>that <em>actually works?</em></h2>
+    <p class="fin-sub">A strategy call is 30 minutes. We review your marketing, identify your highest-leverage opportunities, and tell you exactly where we'd focus first.</p>
+    <a href="#" class="btn-fin">Schedule a Free Strategy Call →</a>
+    <div class="fin-fine">Or call: <a href="tel:7274833222">727-483-3222</a> &nbsp;·&nbsp; St. Petersburg, FL &nbsp;·&nbsp; Response within 1 business day</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="w">
+    <div class="ft-g">
+      <div>
+        <a href="#" class="ft-logo"><span class="ft-mark">HUGHEY</span><div class="ft-r"></div><span class="ft-nm">LLC</span></a>
+        <p class="ft-tag">Legal marketing strategy built on twenty years of experience and a relentless focus on retained clients.</p>
+        <div class="ft-nap"><strong>5412 Dover St NE</strong><br>St. Petersburg, FL 33703<br><strong>727-483-3222</strong></div>
+      </div>
+      <div class="ft-col"><div class="ft-ch">Services</div><ul><li><a href="#">Data Analysis</a></li><li><a href="#">Agency Management</a></li><li><a href="#">Intake Optimization</a></li><li><a href="#">Strategic Marketing</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ch">Insights</div><ul><li><a href="#">Marketing OS</a></li><li><a href="#">SEO & AI Search</a></li><li><a href="#">Intake Systems</a></li><li><a href="#">Marketing KPIs</a></li><li><a href="#">Choosing a Partner</a></li></ul></div>
+      <div class="ft-col"><div class="ft-ch">Company</div><ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li><li><a href="#">Location</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2026 Hughey LLC. All rights reserved.</div>
+      <div class="ft-soc"><a href="#">LinkedIn</a><a href="#">Facebook</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV ──────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('solid', scrollY > 40))
+
+// ── HERO SLIDES ──────────────────────────────────────────────────
+let cur = 0, timer
+const slides = document.querySelectorAll('.h-slide')
+const dots = document.querySelectorAll('.h-dot')
+
+function goSlide(n) {
+  slides[cur].classList.remove('active')
+  dots[cur].classList.remove('on')
+  cur = (n + slides.length) % slides.length
+  slides[cur].classList.add('active')
+  dots[cur].classList.add('on')
+  clearInterval(timer)
+  timer = setInterval(() => goSlide(cur + 1), 4200)
+}
+
+timer = setInterval(() => goSlide(cur + 1), 4200)
+
+// ── AUDIT ─────────────────────────────────────────────────────────
+const aqs = [
+  { q: "Do you know your exact cost-per-retained-client for each marketing channel?", dot: 'p1' },
+  { q: "Has your marketing agency ever proactively recommended reducing your budget?", dot: 'p2' },
+  { q: "Does your firm respond to new inbound leads within 5 minutes?", dot: 'p3' }
+]
+let as = 0, ay = 0
+
+function aAns(v) {
+  if (v === 'yes') ay++
+  document.getElementById(aqs[as].dot).classList.add('lit')
+  as++
+  if (as < aqs.length) {
+    const el = document.getElementById('aqText')
+    el.style.opacity = '0'
+    setTimeout(() => { el.textContent = aqs[as].q; el.style.opacity = '1' }, 200)
+  } else {
+    document.getElementById('auditQArea').style.display = 'none'
+    const r = document.getElementById('aRes')
+    r.classList.add('show')
+    const cs = ['#E85D5D','#E8A855','#7DD9A4','#22C55E']
+    const ts = ['Significant leverage waiting to unlock.','Ahead of most firms — real room to grow.','Strong foundation, one constraint to close.','You\'re running a well-optimized operation.']
+    const ms = [
+      'All three gaps cost retained clients every month — and all are fixable without increasing budget. A 30-minute strategy call will show you exactly where to start.',
+      'Two gaps to close. That\'s typically where the biggest leverage sits for firms at your stage.',
+      'Two of three puts you ahead of 80% of law firms. The remaining gap usually has the highest ROI.',
+      'All three fundamentals in place. The next level is systematic growth — scaling what works before the next constraint appears.'
+    ]
+    const s = document.getElementById('aScoreEl')
+    s.textContent = ay + '/3'; s.style.color = cs[ay]
+    document.getElementById('aTitleEl').textContent = ts[ay]
+    document.getElementById('aMsgEl').textContent = ms[ay]
+  }
+}
+
+function aReset() {
+  as = 0; ay = 0
+  document.querySelectorAll('.a-pd').forEach(d => d.classList.remove('lit'))
+  document.getElementById('aRes').classList.remove('show')
+  document.getElementById('auditQArea').style.display = 'block'
+  document.getElementById('aqText').textContent = aqs[0].q
+}
+
+// ── REVEALS ───────────────────────────────────────────────────────
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on') })
+}, { threshold: .08 })
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => obs.observe(el))
+</script>
+</body>
+</html>
