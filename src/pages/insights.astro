@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InsightCard from '../components/InsightCard.astro';
+import { getCollection } from 'astro:content';
+
+const insights = await getCollection('insights');
+const sortedInsights = insights.sort((a, b) =>
+  new Date(b.data.last_updated).getTime() - new Date(a.data.last_updated).getTime()
+);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Hughey LLC Insights',
+  url: 'https://hugheyllc.com/insights',
+};
+---
+
+<BaseLayout
+  title="Legal Marketing Insights & Guides | Hughey LLC"
+  description="Strategic legal marketing insights for law firm owners."
+  canonical="https://hugheyllc.com/insights"
+  schema={schema}
+>
+  <div class="insights-page">
+    <div class="page-header">
+      <h1>Insights</h1>
+      <p>Strategic guides for law firm marketing.</p>
+    </div>
+
+    <div class="insights-container">
+      <div class="insights-grid">
+        {sortedInsights.map((insight) => (
+          <InsightCard
+            title={insight.data.title}
+            excerpt={insight.data.excerpt}
+            slug={insight.data.slug}
+            lastUpdated={insight.data.last_updated}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .insights-page { background: var(--page); }
+  .page-header { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+  .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .page-header p { font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); }
+  .insights-container { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem; }
+  .insights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+</style>

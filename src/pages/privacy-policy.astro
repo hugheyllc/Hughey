@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy | Hughey LLC"
+  description="Privacy policy for Hughey LLC."
+  canonical="https://hugheyllc.com/privacy-policy"
+>
+  <div class="policy-page">
+    <div class="policy-header">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: January 2025</p>
+    </div>
+
+    <div class="policy-content">
+      <section>
+        <h2>Introduction</h2>
+        <p>
+          Hughey LLC operates the hugheyllc.com website. This page informs you of our policies regarding the collection, use, and disclosure of personal data.
+        </p>
+      </section>
+
+      <section>
+        <h2>Information Collection</h2>
+        <p>
+          We collect personal information including name, email address, phone number, and firm name when you contact us.
+        </p>
+      </section>
+
+      <section>
+        <h2>Use of Data</h2>
+        <p>
+          We use collected data to provide customer support, notify you about changes, and improve our services.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          If you have questions about this Privacy Policy, please contact us at <a href="tel:727-483-3222">727-483-3222</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .policy-page { background: var(--page); }
+  .policy-header { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+  .policy-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+  .policy-header p { font-size: 1rem; color: rgba(255, 255, 255, 0.8); }
+  .policy-content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+  section { margin-bottom: 2.5rem; }
+  h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+  p { color: var(--sub); line-height: 1.8; margin-bottom: 1rem; }
+</style>

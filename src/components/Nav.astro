@@ -1,0 +1,37 @@
+---
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+const navLinks: NavLink[] = [
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">Hughey LLC</a>
+    <ul class="nav-links">
+      {navLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+    <a href="/contact" class="nav-cta">Schedule Call</a>
+  </div>
+</nav>
+
+<style>
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 1.25rem 2rem; background: transparent; transition: all 0.3s ease; }
+  .site-nav.solid { background: rgba(18, 35, 64, 0.95); border-bottom: 1px solid var(--border); }
+  .nav-container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { color: var(--white); font-weight: 700; }
+  .nav-links { display: flex; list-style: none; gap: 2rem; }
+  .nav-links a { color: var(--white); font-size: 0.95rem; font-weight: 500; transition: color 0.3s ease; }
+  .nav-links a:hover { color: var(--gl); }
+  .nav-cta { padding: 0.625rem 1.5rem; background: var(--gold); color: var(--ink); font-weight: 600; border-radius: 4px; transition: all 0.3s ease; }
+  .nav-cta:hover { background: var(--gl); }
+</style>

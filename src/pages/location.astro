@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Hughey LLC',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '5412 Dover St NE',
+    addressLocality: 'St. Petersburg',
+    addressRegion: 'FL',
+    postalCode: '33703',
+  },
+  telephone: '727-483-3222',
+  url: 'https://hugheyllc.com',
+};
+---
+
+<BaseLayout
+  title="Hughey LLC Location - St. Petersburg, FL"
+  description="Visit Hughey LLC in St. Petersburg, FL. Serving law firms across Tampa Bay and nationally."
+  canonical="https://hugheyllc.com/location"
+  schema={schema}
+>
+  <div class="location-page">
+    <div class="location-header">
+      <h1>Visit Us</h1>
+      <p>St. Petersburg, FL • Serving Tampa Bay and law firms nationally</p>
+    </div>
+
+    <div class="location-wrapper">
+      <div class="location-info">
+        <h2>Hughey LLC</h2>
+        <div class="info-block">
+          <h3>Address</h3>
+          <address>
+            5412 Dover St NE<br />
+            St. Petersburg, FL 33703
+          </address>
+        </div>
+
+        <div class="info-block">
+          <h3>Phone</h3>
+          <p><a href="tel:727-483-3222">727-483-3222</a></p>
+        </div>
+
+        <div class="info-block">
+          <h3>Service Area</h3>
+          <p>Tampa Bay, Florida • Serving law firms nationally via remote consultations</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .location-page { background: var(--page); }
+  .location-header { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+  .location-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .location-header p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); }
+  .location-wrapper { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+  .location-info h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; }
+  .info-block { margin-bottom: 2rem; }
+  .info-block h3 { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  address { font-style: normal; color: var(--text); line-height: 1.6; }
+  .info-block p { color: var(--text); line-height: 1.6; }
+  .info-block a { color: var(--navy); text-decoration: underline; }
+</style>

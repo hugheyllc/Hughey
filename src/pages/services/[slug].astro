@@ -1,0 +1,33 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'data-analysis-for-law-firms' }, props: { title: 'Marketing Data Analysis' } },
+    { params: { slug: 'agency-management-for-law-firms' }, props: { title: 'Legal Marketing Agency Management' } },
+    { params: { slug: 'intake-process-optimization' }, props: { title: 'Law Firm Intake Process Optimization' } },
+    { params: { slug: 'strategic-marketing-for-law-firms' }, props: { title: 'Strategic Marketing Planning' } },
+  ];
+}
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const { slug } = Astro.params;
+const { title } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description="Learn more about this service."
+  canonical={`https://hugheyllc.com/services/${slug}`}
+>
+  <div class="page-header">
+    <h1>{title}</h1>
+  </div>
+  <div class="page-content">
+    <p>Service details coming soon.</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header { background: var(--navy); color: var(--white); padding: 6rem 2rem; }
+  .page-header h1 { font-size: 2.5rem; font-weight: 800; max-width: 1280px; margin: 0 auto; }
+  .page-content { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem; }
+</style>

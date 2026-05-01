@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Joe Hughey',
+  jobTitle: 'Legal Marketing Specialist',
+  url: 'https://hugheyllc.com/about',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Hughey LLC',
+  },
+  sameAs: ['https://linkedin.com/in/joehughey'],
+};
+---
+
+<BaseLayout
+  title="About Hughey LLC — Legal Marketing Consultancy | Tampa Bay, FL"
+  description="Learn about Joe Hughey and Hughey LLC's 20+ year focus on strategic legal marketing for law firms."
+  canonical="https://hugheyllc.com/about"
+  schema={schema}
+>
+  <div class="page-header">
+    <div class="header-container">
+      <h1>About Hughey LLC</h1>
+      <p class="lead">
+        Twenty years focused exclusively on one industry. That focus is the entire difference.
+      </p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <section class="content-section">
+      <h2>The Foundation</h2>
+      <p>
+        Hughey LLC was founded on a simple observation: most law firms don't actually know if their marketing is working. They get beautiful reports from their agencies, but none of it connects to retained clients.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>What We Do Differently</h2>
+      <ul>
+        <li>We work exclusively with law firms.</li>
+        <li>We connect marketing directly to business outcomes.</li>
+        <li>We don't recommend spending more. We recommend spending smarter.</li>
+        <li>We build custom solutions.</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 6rem 2rem;
+  }
+
+  .header-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+  }
+
+  .page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .content-section p {
+    font-size: 1.05rem;
+    color: var(--sub);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .content-section ul {
+    margin-left: 2rem;
+    color: var(--sub);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .content-section li {
+    margin-bottom: 0.75rem;
+  }
+</style>

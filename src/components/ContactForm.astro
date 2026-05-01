@@ -1,0 +1,84 @@
+---
+---
+
+<form id="contact-form" class="contact-form">
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="firm_name">Firm Name</label>
+    <input type="text" id="firm_name" name="firm_name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone" required />
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+
+  <input type="text" name="website" style="display:none" />
+  <div id="form-status"></div>
+  <button type="submit" class="submit-btn">Send Message →</button>
+</form>
+
+<style>
+  .contact-form { display: grid; gap: 1.5rem; max-width: 600px; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  label { font-weight: 600; color: var(--text); font-size: 0.9rem; }
+  input, textarea { padding: 0.875rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 1rem; color: var(--text); }
+  textarea { min-height: 150px; resize: vertical; }
+  .submit-btn { padding: 1rem 1.75rem; background: var(--navy); color: var(--white); border: none; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 1rem; }
+  .submit-btn:hover { background: var(--mid); }
+  #form-status { padding: 1rem; border-radius: 4px; font-size: 0.9rem; display: none; }
+  #form-status.success { background: rgba(26, 158, 107, 0.1); color: var(--ok); display: block; }
+  #form-status.error { background: rgba(190, 136, 48, 0.1); color: var(--gold); display: block; }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const statusDiv = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    if (formData.get('website')) { form.reset(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          firm_name: formData.get('firm_name'),
+          phone: formData.get('phone'),
+          message: formData.get('message'),
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        statusDiv!.className = 'success';
+        statusDiv!.textContent = 'Thanks — we\'ll be in touch within one business day.';
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Failed to send');
+      }
+    } catch (error) {
+      statusDiv!.className = 'error';
+      statusDiv!.textContent = 'Something went wrong. Please call us at 727-483-3222.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message →';
+    }
+  });
+</script>

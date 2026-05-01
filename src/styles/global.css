@@ -1,0 +1,75 @@
+:root {
+  --ink: #09131E;
+  --navy: #122340;
+  --mid: #1E3A6E;
+  --gold: #BE8830;
+  --gl: #D4A048;
+  --gcream: #F2E0B8;
+  --amber: #FBF5E8;
+  --cream: #F4EDE0;
+  --page: #FAFAF7;
+  --white: #FFFFFF;
+  --text: #0D1A2A;
+  --sub: #4A5568;
+  --dim: #8896A7;
+  --border: #DFD5C8;
+  --ok: #1A9E6B;
+
+  --f: 'Manrope', system-ui, sans-serif;
+  --s: 'Libre Baskerville', serif;
+  --b: 'Barlow Condensed', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--f);
+  color: var(--text);
+  background-color: var(--page);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--f);
+}
+
+a {
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--mid);
+}
+
+button, input, textarea, select {
+  font-family: var(--f);
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}

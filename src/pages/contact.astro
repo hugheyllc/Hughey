@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Hughey LLC',
+  url: 'https://hugheyllc.com/contact',
+};
+---
+
+<BaseLayout
+  title="Contact Hughey LLC — Schedule a Strategy Call"
+  description="Get in touch with Hughey LLC for a free strategy consultation."
+  canonical="https://hugheyllc.com/contact"
+  schema={schema}
+>
+  <div class="contact-page">
+    <div class="contact-header">
+      <h1>Let's Talk</h1>
+      <p>No pitch. No deck. Just a conversation about your firm's marketing.</p>
+    </div>
+
+    <div class="contact-wrapper">
+      <div class="contact-form-section">
+        <h2>Get in Touch</h2>
+        <ContactForm />
+      </div>
+
+      <div class="contact-info">
+        <h3>Hughey LLC</h3>
+        <div class="info-item">
+          <h4>Address</h4>
+          <address>
+            5412 Dover St NE<br />
+            St. Petersburg, FL 33703
+          </address>
+        </div>
+
+        <div class="info-item">
+          <h4>Phone</h4>
+          <p><a href="tel:727-483-3222">727-483-3222</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-page { background: var(--page); }
+  .contact-header { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+  .contact-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .contact-header p { font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); }
+  .contact-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 4rem 2rem; }
+  .contact-form-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: var(--text); }
+  .contact-info { background: var(--cream); padding: 2rem; border-radius: 8px; }
+  .contact-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 2rem; color: var(--text); }
+  .info-item { margin-bottom: 2rem; }
+  .info-item h4 { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.5rem; }
+  address { font-style: normal; color: var(--text); line-height: 1.6; }
+  @media (max-width: 768px) { .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; } }
+</style>

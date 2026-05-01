@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.filter((post) => !post.data.draft).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Hughey LLC Blog',
+  url: 'https://hugheyllc.com/blog',
+};
+---
+
+<BaseLayout
+  title="Law Firm Marketing Blog | Hughey LLC"
+  description="Articles on legal marketing and growth strategies."
+  canonical="https://hugheyllc.com/blog"
+  schema={schema}
+>
+  <div class="blog-page">
+    <div class="page-header">
+      <h1>Blog</h1>
+      <p>Articles on legal marketing and growth.</p>
+    </div>
+
+    <div class="blog-container">
+      {sortedPosts.length > 0 ? (
+        <div class="posts-grid">
+          {sortedPosts.map((post) => (
+            <article class="post-card">
+              <a href={`/blog/${post.data.slug}`} class="post-link">
+                <h3>{post.data.title}</h3>
+                <p class="excerpt">{post.data.excerpt}</p>
+                <span class="read-more">Read →</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p>No posts yet.</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-page { background: var(--page); }
+  .page-header { background: var(--navy); color: var(--white); padding: 6rem 2rem; text-align: center; }
+  .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .page-header p { font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); }
+  .blog-container { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem; }
+  .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+  .post-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s ease; }
+  .post-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); }
+  .post-link { display: flex; flex-direction: column; height: 100%; padding: 1.5rem; gap: 1rem; }
+  .post-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+  .excerpt { font-size: 0.9rem; color: var(--sub); line-height: 1.6; flex-grow: 1; }
+  .read-more { color: var(--navy); font-weight: 600; font-size: 0.85rem; }
+</style>
